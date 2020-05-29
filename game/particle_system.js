@@ -1,4 +1,4 @@
-class Particle extends GuaImage {
+class Particle extends MiaoImage {
     constructor(game) {
         super(game, 'fire')
         this.setup()

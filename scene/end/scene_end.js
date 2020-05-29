@@ -9,12 +9,14 @@ class SceneEnd extends SceneClass {
     }
 
     draw() {
+        var ctx = this.game.context
         // background
-        this.game.context.fillStyle = '#554'
-        this.game.context.fillRect(0, 0, 400, 600)
+        ctx.fillStyle = '#bd9b8f'
+        ctx.fillRect(0, 0, 400, 600)
 
-        // score
-        this.game.context.fillStyle = 'black'
-        this.game.context.fillText('游戏结束,按r返回标题界面', 150, 150)
+        // 提示
+        ctx.fillStyle = 'white'
+        ctx.font = '12px monospace'
+        ctx.fillText('游戏结束,按r返回标题界面', 130, 150)
     }
 }

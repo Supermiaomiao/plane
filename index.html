@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>miaogame2</title>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <!-- game相关文件 -->
+        <script src="game/utils.js"></script>
+        <script src="game/scene_class.js"></script>
+        <script src="game/game_class.js"></script>
+        <script src="game/image_class.js"></script>
+        <script src="game/label_class.js"></script>
+        <script src="game/particle_system.js"></script>
+        <!-- 主场景文件 -->
+        <script src="scene/main/scene.js"></script>
+        <!-- 结束和标题场景 -->
+        <script src="scene/end/scene_end.js"></script>
+        <script src="scene/title/scene_title.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="id-canvas" width="400" height="600"></canvas>
+            <div>
+            <div>
+                <div class="info">
+                    <h5>玩法说明</h5>
+                    <ul>
+                        <li>按k开始游戏</li>
+                        <li>方向键: aswd</li>
+                        <li>按 j 开火</li>
+                        <li>按 p 暂停</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="config">
+                <div>
+                    <label>
+                        <input class="miao-auto-slider"
+                        type="range"
+                        value="60"
+                        data-value="fps"
+                        >
+                        fps: <span class="miao-label">60</span>
+                    </label>
+                </div>
+                <div class="">
+                    <label>
+                        <input class="miao-auto-slider"
+                        type="range"
+                        value="10"
+                        data-value="config.player_speed"
+                        >
+                        玩家速度: <span class="miao-label">10</span>
+                    </label>
+                </div>
+                <div class="">
+                    <label>
+                        <input class="miao-auto-slider"
+                        type="range"
+                        value="2"
+                        data-value="config.bullet_speed"
+                        >
+                        子弹速度: <span class="miao-label">2</span>
+                    </label>
+                </div>
+                <div class="">
+                    <label>
+                        <input class="miao-auto-slider"
+                        type="range"
+                        max="10"
+                        value="9"
+                        data-value="config.fire_cooldown"
+                        >
+                        冷却时间: <span class="miao-label">9</span>
+                    </label>
+                </div>
+            </div>
+            </div>
+        <div>
+        <script type="text/javascript"></script>
+        <script src="main.js"></script>
+        <script>
+            var es = sel => document.querySelectorAll(sel)
+
+            var bindAll = function(sel, eventName, callback) {
+                var l = es(sel)
+                for (var i = 0; i < l.length; i++) {
+                    let input = l[i]
+                    input.addEventListener(eventName, function(event) {
+                        callback(event)
+                    })
+                }
+            }
+
+            bindAll('.miao-auto-slider', 'input', function(event) {
+                var target = event.target
+                var bindVar = target.dataset.value
+                var v = target.value
+                eval(bindVar + '=' + v)
+                var label = target.closest('label').querySelector('.miao-label')
+                label.innerText = v
+            })
+        </script>
+        <!-- 原则: 最外层只能有函数不能有变量, 程序只能有一个入口 -->
+
+    </body>
+
+
+</html>

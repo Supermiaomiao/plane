@@ -8,7 +8,7 @@ const config = {
     player_life: 50,
 }
 
-class Bullet extends GuaImage {
+class Bullet extends MiaoImage {
     constructor(game, role) {
         if (role === 'enemy') {
             super(game, 'enemy_bullet')
@@ -39,7 +39,7 @@ class Bullet extends GuaImage {
     }
 }
 
-class Player extends GuaImage {
+class Player extends MiaoImage {
     constructor(game) {
         super(game, 'player')
         this.setup()
@@ -126,7 +126,7 @@ class Player extends GuaImage {
     }
 }
 
-class Enemy extends GuaImage {
+class Enemy extends MiaoImage {
     constructor(game) {
         var type = randomBetween(0, 2)
         var name = 'enemy' + type
@@ -174,7 +174,6 @@ class Enemy extends GuaImage {
                 return
             }
             player.kill()
-            console.log('life', player.life);
             this.maxCollide--
             let ps = new ParticleSystem(this.game)
             ps.x = player.x + player.w / 2
@@ -223,7 +222,7 @@ class Enemy extends GuaImage {
 
 }
 
-class Cloud extends GuaImage {
+class Cloud extends MiaoImage {
     constructor(game) {
         super(game, 'cloud')
         this.setup()
@@ -253,11 +252,11 @@ class Scene extends SceneClass {
     setup() {
         var game = this.game
         this.numberOfEnemies = 10
-        this.bg1 = new GuaImage(game, 'sky')
-        this.bg2 = new GuaImage(game, 'sky')
+        this.bg1 = new MiaoImage(game, 'sky')
+        this.bg2 = new MiaoImage(game, 'sky')
         this.bg1.y = -600
 
-        // this.cloud = new GuaImage(game)
+        // this.cloud = new MiaoImage(game)
 
         this.player = new Player(game)
         this.player.x = 150
@@ -305,7 +304,8 @@ class Scene extends SceneClass {
     draw() {
         super.draw()
         this.game.context.fillStyle = 'black'
-        this.game.context.fillText(`blood:${this.player.life}`, 350, 570)
+        this.game.context.font = "14px monospace"
+        this.game.context.fillText(`blood:${this.player.life}`, 330, 570)
     }
 
     update() {

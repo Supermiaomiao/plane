@@ -8,9 +8,13 @@ class SceneTitle extends SceneClass {
             game.replaceScene(s)
         })
     }
-    // draw() {
-    //     // score
-    //     this.game.context.fillStyle = 'black'
-    //     this.game.context.fillText('游戏开始,按k开始游戏', 150, 150)
-    // }
+    draw() {
+        var ctx = this.game.context
+        // score
+        ctx.fillStyle = '#bd9b8f'
+        ctx.fillRect(0, 0, 400, 600)
+        ctx.fillStyle = 'white'
+        ctx.font = '12px monospace'
+        ctx.fillText('按k开始游戏', 165, 150)
+    }
 }
